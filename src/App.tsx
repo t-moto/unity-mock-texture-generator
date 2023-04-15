@@ -7,16 +7,16 @@ import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 
 const Scene = styled.div`
-  width: 320px;
-  height: 180px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
   background-image: url(${skybox});
   background-size: contain;
   margin: 0 auto;
 `;
 
 const Canvas = styled.canvas`
-  width: 320px;
-  height: 180px;
+  width: 100%;
+  height: 100%;
 `;
 
 const Result = styled.div`
