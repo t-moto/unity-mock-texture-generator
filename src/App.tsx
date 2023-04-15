@@ -83,7 +83,7 @@ function App() {
     <div className="App">
       <Container maxWidth="sm">
 
-        <Grid container spacing={2} justifyContent="center">
+        <Grid py={2} container spacing={2} justifyContent="center">
 
           <Grid item xs={8}>
             <Typography variant="caption">プレビュー</Typography>
