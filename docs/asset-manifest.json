@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/unity-mock-texture-generator/static/css/main.04868c4d.css",
-    "main.js": "/unity-mock-texture-generator/static/js/main.a74a8687.js",
+    "main.js": "/unity-mock-texture-generator/static/js/main.b7d1d84f.js",
     "static/js/787.c1112931.chunk.js": "/unity-mock-texture-generator/static/js/787.c1112931.chunk.js",
     "static/media/skybox.png": "/unity-mock-texture-generator/static/media/skybox.beb077531f156a5cbb00.png",
     "index.html": "/unity-mock-texture-generator/index.html",
     "main.04868c4d.css.map": "/unity-mock-texture-generator/static/css/main.04868c4d.css.map",
-    "main.a74a8687.js.map": "/unity-mock-texture-generator/static/js/main.a74a8687.js.map",
+    "main.b7d1d84f.js.map": "/unity-mock-texture-generator/static/js/main.b7d1d84f.js.map",
     "787.c1112931.chunk.js.map": "/unity-mock-texture-generator/static/js/787.c1112931.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.04868c4d.css",
-    "static/js/main.a74a8687.js"
+    "static/js/main.b7d1d84f.js"
   ]
 }
