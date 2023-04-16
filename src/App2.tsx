@@ -4,7 +4,6 @@ import './App.css';
 import { Box, Button, Container, Grid, Paper, Slider, Stack, Typography } from '@mui/material';
 import styled from '@emotion/styled';
 import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
-import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import alpha from './alpha.png';
 
 const Scene = styled.div`
@@ -49,9 +48,13 @@ const HiddenCanvas = styled.canvas`
   display: none;
 `;
 
-function App() {
+function valueLabelFormat(value: number) {
+  return `${value}px`;
+}
 
-  const [size, setSize] = useState(10);
+function App2() {
+
+  const [size, setSize] = useState(128);
   const [dataURL, setDataURL] = useState("");
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -66,29 +69,26 @@ function App() {
     canvas.width = 320 * 2;
     canvas.height = 180 * 2;
 
-    context.imageSmoothingEnabled = false;
+    context.imageSmoothingEnabled = true;
     context.beginPath();
 
-    // 線を内側に描画する
-    const fixedSize = 512 * canvas.height / 1080 - size;
-    context.rect((canvas.width - fixedSize) / 2, (canvas.height - fixedSize) / 2, fixedSize, fixedSize);
-
-    context.strokeStyle = "white";
-    context.lineWidth = size;
-    context.stroke();
+    const fixedSize = size * canvas.height / 1080;
+    context.arc(canvas.width / 2.0, canvas.height / 2.0, fixedSize / 2.0, 0, Math.PI * 2.0, true);
+    context.fillStyle = "white";
+    context.fill();
 
     const canvas2 = canvasRef2.current!;
     const context2 = canvas2.getContext("2d")!;
 
-    canvas2.width = size * 2 + 2;
-    canvas2.height = size * 2 + 2;
+    canvas2.width = size;
+    canvas2.height = size;
 
-    context2.imageSmoothingEnabled = false;
+    context2.imageSmoothingEnabled = true;
     context2.beginPath();
 
-    context2.fillStyle = 'white';
-    context2.fillRect(0, 0, canvas2.width, canvas2.height);
-    context2.clearRect(size, size, 2, 2);
+    context2.arc(size / 2.0, size / 2.0, size / 2.0, 0, Math.PI * 2.0, true);
+    context2.fillStyle = "white";
+    context2.fill();
 
     setDataURL(canvas2.toDataURL("image/png"));
   }, [size]);
@@ -107,9 +107,7 @@ function App() {
             <Typography variant="caption">プレビュー</Typography>
             <Paper>
               <Box p={2}>
-                <Scene>
-                  <Canvas ref={canvasRef} />
-                </Scene>
+                <Scene><Canvas ref={canvasRef} /></Scene>
               </Box>
             </Paper>
           </Grid>
@@ -118,15 +116,22 @@ function App() {
             <Typography variant="caption">操作</Typography>
             <Paper>
               <Box px={2} py={1}>
+
                 <Stack spacing={2} direction="row" alignItems="center">
-                  <DriveFileRenameOutlineIcon />
+
+                  <Typography variant='caption' noWrap sx={{ width: "4em" }}>
+                    直径
+                  </Typography>
+
                   <Slider
                     size="small"
                     aria-label="Small"
                     valueLabelDisplay="auto"
                     value={size}
-                    min={1}
-                    max={50}
+                    min={2}
+                    max={512}
+                    step={2}
+                    valueLabelFormat={valueLabelFormat}
                     onChange={onChangeSize}
                   />
                 </Stack>
@@ -151,7 +156,7 @@ function App() {
                     </Size>
                   </Box>
 
-                  <Button variant="outlined" startIcon={<DownloadForOfflineIcon />} href={dataURL} download={`wired-rect-${size}.png`}>
+                  <Button variant="outlined" startIcon={<DownloadForOfflineIcon />} href={dataURL} download={`circle-${size}x${size}.png`}>
                     ダウンロード
                   </Button>
                 </Stack>
@@ -166,4 +171,4 @@ function App() {
   );
 }
 
-export default App;
+export default App2;
