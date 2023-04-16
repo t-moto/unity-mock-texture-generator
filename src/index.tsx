@@ -32,7 +32,9 @@ const router = createBrowserRouter([
     path: "/particle-circle",
     element: <App4 />,
   },
-]);
+], {
+  basename: '/unity-mock-texture-generator'
+});
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
